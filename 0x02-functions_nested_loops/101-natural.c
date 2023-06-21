@@ -5,30 +5,18 @@
 *
 * Return: void
 */
-void print_sum_multiples(void)
+int main(void)
 {
-	int limit = 1024;
-	int sum = 0;
-
-	for (int i = 0; i < limit; i++)
+	int i, z = 0;
+	
+	while (i < 1024)
 	{
-	if (i % 3 == 0 || i % 5 == 0)
+	if ((i % 3 == 0) || (i % 5 == 0))
 	{
-	sum += i;
+	z += i;
 	}
+	i++;
 	}
-
-	printf("%d\n", sum);
-}
-
-/**
-* main - Entry point of the program.
-*
-* Return: 0 on success.
-*/
-	int main(void)
-	{
-	print_sum_multiples();
-
+	printf("%d\n", z);
 	return (0);
 }
