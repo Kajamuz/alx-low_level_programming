@@ -2,23 +2,23 @@
 
 /**
  * _atoi - Converts a string to an integer
- * @s: Pointer to the string
+ * @s: String to be converted
  *
- * Return: The converted integer value
+ * Return: The integer converted from the string
  *
- * Description: This function converts the string pointed to
- * by 's' into an integer value and returns the result.
+ * Description: This function converts the string
+ * pointed to by 's' into an integer.
+ * It handles positive and negative numbers
+ * and returns the converted integer value.
  */
 int _atoi(char *s)
 {
-	int i, d, n, len, f, digit;
-
-	i = 0;
-	d = 0;
-	n = 0;
-	len = 0;
-	f = 0;
-	digit = 0;
+	int i = 0;
+	int d = 0;
+	int n = 0;
+	int len = 0;
+	int f = 0;
+	int digit = 0;
 
 	while (s[len] != '\0')
 		len++;
@@ -26,7 +26,7 @@ int _atoi(char *s)
 	while (i < len && f == 0)
 	{
 		if (s[i] == '-')
-			++d;
+			d++;
 
 		if (s[i] >= '0' && s[i] <= '9')
 		{

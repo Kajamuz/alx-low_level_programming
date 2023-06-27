@@ -1,50 +1,49 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - check the code
+ * _atoi - Converts a string to an integer
+ * @s: String to be converted
  *
- * Return: Always 0.
- */
-int main(void)
-{
-    char s1[98];
-    char *ptr;
-
-    ptr = _strcpy(s1, "First, solve the problem. Then, write the code\n");
-    printf("%s", s1);
-    printf("%s", ptr);
-    return (0);
-}
-.............................................................................
-vim 100-main.c
-#include "main.h"
-#include <stdio.h>
-
-/**
- * main - check the code
+ * Return: The integer converted from the string
  *
- * Return: Always 0.
+ * Description: This function converts the string
+ * pointed to by 's' into an integer.
+ * It handles positive and negative numbers
+ * and returns the converted integer value.
  */
-int main(void)
+int _atoi(char *s)
 {
-    int nb;
+	int i = 0;
+	int d = 0;
+	int n = 0;
+	int len = 0;
+	int f = 0;
+	int digit = 0;
 
-    nb = _atoi("98");
-    printf("%d\n", nb);
-    nb = _atoi("-402");
-    printf("%d\n", nb);
-    nb = _atoi("          ------++++++-----+++++--98");
-    printf("%d\n", nb);
-    nb = _atoi("214748364");
-    printf("%d\n", nb);
-    nb = _atoi("0");
-    printf("%d\n", nb);
-    nb = _atoi("Suite 402");
-    printf("%d\n", nb);
-    nb = _atoi("         +      +    -    -98 Battery Street; San Francisco, CA 94111 - USA             ");
-    printf("%d\n", nb);
-    nb = _atoi("---++++ -++ Sui - te -   402 #cisfun :)");
-    printf("%d\n", nb);
-    return (0);
+	while (s[len] != '\0')
+	len++;
+
+	while (i < len && f == 0)
+	{
+	if (s[i] == '-')
+	d++;
+
+	if (s[i] >= '0' && s[i] <= '9')
+	{
+	digit = s[i] - '0';
+	if (d % 2)
+	digit = -digit;
+	n = n * 10 + digit;
+	f = 1;
+	if (s[i + 1] < '0' || s[i + 1] > '9')
+	break;
+	f = 0;
+	}
+	i++;
+	}
+
+	if (f == 0)
+	return (0);
+
+	return (n);
 }
