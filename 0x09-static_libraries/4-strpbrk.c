@@ -1,4 +1,4 @@
-#include <string.h>
+#include "main.h"
 
 /**
  * _strpbrk - Searches the string 's' for any
@@ -14,5 +14,17 @@
  */
 char *_strpbrk(char *s, char *accept)
 {
-	return (strpbrk(s, accept));
+	int k;
+
+	while (*s)
+	{
+		for (k = 0; accept[k]; k++)
+		{
+		if (*s == accept[k])
+		return (s);
+		}
+	s++;
+	}
+
+return ('\0');
 }

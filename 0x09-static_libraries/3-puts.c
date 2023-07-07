@@ -1,15 +1,18 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * _puts - Writes the string 's' to the standard
  * output (console) followed by a newline character.
  *
- * @s: Pointer to the string to be written.
+ * @str: Pointer to the string to be written.
  *
- * Returns:
- *   None
+ * Return: None
  */
-void _puts(char *s)
+void _puts(char *str)
 {
-	puts(s);
+	while (*str != '\0')
+	{
+		_putchar(*str++);
+	}
+		_putchar('\n');
 }

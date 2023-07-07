@@ -1,4 +1,4 @@
-#include <ctype.h>
+#include "main.h"
 
 /**
  * _isalpha - Checks if given character 'c' is alphabetic
@@ -11,5 +11,5 @@
  */
 int _isalpha(int c)
 {
-	return (isalpha(c));
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

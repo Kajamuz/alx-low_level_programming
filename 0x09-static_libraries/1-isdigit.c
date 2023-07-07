@@ -1,4 +1,4 @@
-#include <ctype.h>
+#include "main.h"
 
 /**
  * _isdigit - Checks if a character is a digit.
@@ -10,5 +10,5 @@
  */
 int _isdigit(int c)
 {
-	return (isdigit(c));
+	return (c >= '0' && c <= '9');
 }

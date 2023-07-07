@@ -1,4 +1,5 @@
-#include <string.h>
+#include "main.h"
+#include <stddef.h>
 
 /**
  * _strchr - Searches for the first occurrence
@@ -12,5 +13,12 @@
  */
 char *_strchr(char *s, char c)
 {
-	return (strchr(s, c));
+	int i = 0;
+
+	for (; s[i] >= '\0'; i++)
+	{
+		if (s[i] == c)
+			return (&s[i]);
+	}
+	return (0);
 }
