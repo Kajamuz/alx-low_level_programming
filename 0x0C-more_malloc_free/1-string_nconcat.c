@@ -1,56 +1,51 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * _strlen - return the length of a string
- * Code description: This function calculates the length of
- * a string passed as an argument.
- * @s: (char*) string
- * Return: (unsigned int) length of string or 0 if string is NULL
- */
-unsigned int _strlen(char *s)
-{
-	unsigned int i = 0;
-
-	if (s == NULL)
-		return (0);
-
-	while (*s)
-	{
-		i++;
-		s++;
-	}
-
-	return (i);
-}
-
-/**
- * string_nconcat - concatenates two strings
- * Code description: This function concatenates two strings up
- * to n characters from the second string. If n is greater than the
- * length of the second string, it uses the full length.
- * @s1: (char*) string 1
- * @s2: (char*) string 2
- * @n: (unsigned int) limit of characters to concatenate from string 2
- * Return: (char*) pointer to the new string or NULL if it fails
+ * string_nconcat - Concatenates two strings.
+ * Code description: This function concatenates two strings, s1 and s2,
+ * up to n bytes from s2. It dynamically allocates memory for the
+ * concatenated string and returns a pointer to it.
+ * @s1: The first string.
+ * @s2: The second string.
+ * @n: The maximum number of bytes of s2 to concatenate.
+ *
+ * Return: A pointer to the concatenated string, or NULL on failure.
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i, j;
-	char *new_str;
+	char *concatenated;
+	unsigned int s1_len = 0, s2_len = 0, concat_len = 0, i, j;
 
-	if (n >= _strlen(s2))
-		n = _strlen(s2);
+	if (s1 != NULL)
+	{
+		while (s1[s1_len] != '\0')
+			s1_len++;
+	}
 
-	new_str = malloc_checked((_strlen(s1) + n + 1) * sizeof(char));
+	if (s2 != NULL)
+	{
+		while (s2[s2_len] != '\0')
+			s2_len++;
+	}
 
-	if (new_str == NULL)
+	if (n >= s2_len)
+		concat_len = s1_len + s2_len;
+	else
+		concat_len = s1_len + n;
+
+	concatenated = malloc(sizeof(char) * (concat_len + 1));
+
+	if (concatenated == NULL)
 		return (NULL);
 
-	for (i = 0; s1 && s1[i]; i++)
-		new_str[i] = s1[i];
-	for (j = 0; s2 && j < n; j++)
-		new_str[i + j] = s2[j];
-	new_str[i + j] = '\0';
+	for (i = 0; i < s1_len; i++)
+		concatenated[i] = s1[i];
 
-	return (new_str);
+	for (j = 0; j < n && j < s2_len; j++)
+		concatenated[i++] = s2[j];
+
+	concatenated[i] = '\0';
+
+	return (concatenated);
 }
