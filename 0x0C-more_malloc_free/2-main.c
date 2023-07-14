@@ -1,32 +1,50 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
- * _calloc - Allocates memory for an array
- * @nmemb: Number of elements in the array
- * @size: Size of each element in bytes
+ * simple_print_buffer - prints buffer in hexa
+ * @buffer: the address of memory to print
+ * @size: the size of the memory to print
  *
- * Description: This function allocates memory for an array of @nmemb elements,
- * each of @size bytes. The allocated memory is initialized to 0. If the
- * allocation fails or either @nmemb or @size is 0, it returns NULL.
- *
- * Return: Pointer to the allocated memory, or NULL if allocation fails
+ * Return: Nothing.
  */
-void *_calloc(unsigned int nmemb, unsigned int size)
+void simple_print_buffer(char *buffer, unsigned int size)
 {
-	unsigned int i;
-	char *ptr;
+    unsigned int i;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
+    i = 0;
+    while (i < size)
+    {
+        if (i % 10)
+        {
+            printf(" ");
+        }
+        if (!(i % 10) && i)
+        {
+            printf("\n");
+        }
+        printf("0x%02x", buffer[i]);
+        i++;
+    }
+    printf("\n");
+}
 
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
-		return (NULL);
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *a;
 
-	for (i = 0; i < nmemb * size; i++)
-	{
-		ptr[i] = 0;
-	}
-
-	return (ptr);
+    a = _calloc(98, sizeof(char));
+    strcpy(a, "Best");
+    strcpy(a + 4, " School! :)\n");
+    a[97] = '!';
+    simple_print_buffer(a, 98);
+    free(a);
+    return (0);
 }
