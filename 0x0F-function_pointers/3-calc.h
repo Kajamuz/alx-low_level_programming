@@ -7,8 +7,8 @@
  * @f: The associated function.
  *
  * Description: This struct defines an operator and
- * 	its associated function to be used in a simple
- *	calculator program.
+ * its associated function to be used in a simple
+ * calculator program.
  */
 typedef struct op
 {
